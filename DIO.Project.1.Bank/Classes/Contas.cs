@@ -40,12 +40,12 @@ namespace DIO
             //Validacao de saldo suficiente
             if (this.Saldo - valorSaque < (this.Credito * -1))
             {
-                Console.WriteLine("saldo insuficiente!");
+                Console.WriteLine("Saldo insuficiente!");
                 return false;
             }
                 this.Saldo -= valorSaque;
         //o valor em chave {0} e referente a os dados que estiverem em this.Nome e o valor a ser mostrado na {1} e referente ao this.Saldo
-                Console.WriteLine("saldo atual da conta de {0} e {1}", this.Nome, this.Saldo);
+                Console.WriteLine("Saldo atual da conta de {0} e {1}", this.Nome, this.Saldo);
         //Procurar informacao no docs.microsoft.com composite-formating
                 return true;
         }
