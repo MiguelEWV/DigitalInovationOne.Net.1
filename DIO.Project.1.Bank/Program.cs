@@ -7,6 +7,7 @@ namespace DIO.Project._1.Bank
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Console.ReadLine();
         }
     }
 }
