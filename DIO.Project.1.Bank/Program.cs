@@ -34,27 +34,41 @@ namespace DIO //NameSpace tem que ser o mesmo em todas as classes relacionadas n
                 case "C" :
                     Console.Clear();
                     break;
+                case "":
+                Console.WriteLine();
+                Console.WriteLine("===================================");
+                Console.WriteLine("= Por favor seleccione una opcion =");
+                Console.WriteLine("===================================");
+                Console.WriteLine();
+                break;
                 default:
-                throw new ArgumentOutOfRangeException();
-
-            }
+                Console.WriteLine();
+                Console.WriteLine("============================================");
+                Console.WriteLine("= Gracias por el uso de nuestros servicios.=");
+                Console.WriteLine("============================================");
+                Console.WriteLine();
+                Console.ReadLine();
+                Environment.Exit(0);
+                
+                break;
+                //throw new ArgumentOutOfRangeException();
+                }
             opcaoUsuario = ObterOpcaoUsuario();
-
-        }// funcao final quando e usado o x ele sai do terminal e fecha app
-        Console.WriteLine("============================================");
-        Console.WriteLine("= Gracias por el uso de nuestros servicios.=");
-        Console.WriteLine("============================================");
-        Console.ReadLine();
+                
+            }// funcao final quando e usado o x ele sai do terminal e fecha app
+        
+        
         }
 //===============================================================================================
 
         private static void Depositar() //Opcao de depositos
         {
-             Console.Write("Escriva el numero de la cuenta a realizar el deposito: ");// este numero es gerado pelo listador de cuentas exemplo 0, 1,
+             Console.Write("Escriva el numero de la cuenta a realizar el deposito:  ");// este numero es gerado pelo listador de cuentas exemplo 0, 1,
             int indiceConta = int.Parse(Console.ReadLine());
 
-            Console.Write("Escriva el valor a ser guardado en su cuenta");
+            Console.Write("Escriva el valor a ser guardado en su cuenta: ");
             double valorDeposito = double.Parse(Console.ReadLine());
+            Console.WriteLine();
 
             listContas[indiceConta].Depositar(valorDeposito);// el indice conta que e inserido vai tirar o valor que esta em "Sacar" Metodo publico da clase 'Contas.cs'
        
@@ -65,14 +79,15 @@ namespace DIO //NameSpace tem que ser o mesmo em todas as classes relacionadas n
 
         private static void Transferir()  // opcao de transferencias
         {
-            Console.Write("Escriva el numero de la cuenta de origen: ");
+            Console.Write("Escriva el numero de la cuenta de origen:  ");
             int indiceContaOrigen = int.Parse(Console.ReadLine());
 
-            Console.Write("Escriva el numero de la cuenta de destino: ");
+            Console.Write("Escriva el numero de la cuenta de destino:  ");
             int indiceContaDestino = int.Parse(Console.ReadLine());
 
-            Console.Write("Escriva la cantidad de dinero a ser transferida: ");
+            Console.Write("Escriva la cantidad de dinero a ser transferida:  ");
             double valorTransferencia = double.Parse(Console.ReadLine());
+            Console.WriteLine();
 
             listContas[indiceContaOrigen].Transferir(valorTransferencia, listContas[indiceContaDestino]);
 
@@ -81,11 +96,12 @@ namespace DIO //NameSpace tem que ser o mesmo em todas as classes relacionadas n
 
         private static void Sacar()  //Opcao de saques
         {
-            Console.Write("Escriva el numero de la cuenta a realizar el saque: ");// este numero es gerado pelo listador de cuentas exemplo 0, 1,
+            Console.Write("Escriva el numero de la cuenta a realizar el saque:  ");// este numero es gerado pelo listador de cuentas exemplo 0, 1,
             int indiceConta = int.Parse(Console.ReadLine());
-
-            Console.Write("Escriva el valor a ser extraido de su cuenta");
+            
+            Console.Write("Escriva el valor a ser extraido de su cuenta:  ");
             double valorSaque = double.Parse(Console.ReadLine());
+            Console.WriteLine();
 
             listContas[indiceConta].Sacar(valorSaque);// el indice conta que e inserido vai tirar o valor que esta em "Sacar" Metodo publico da clase 'Contas.cs'
         }
@@ -93,14 +109,22 @@ namespace DIO //NameSpace tem que ser o mesmo em todas as classes relacionadas n
 //=============================================================================================================================
         private static void ListarContas() //Opcao do listador de contas
         {
+            
+            Console.WriteLine();
             Console.WriteLine("======================");
             Console.WriteLine("| Listar las cuentas |");
             Console.WriteLine("======================");
+            Console.WriteLine();
+            
             if (listContas.Count == 0)
             {
+                
+                Console.WriteLine();
                 Console.WriteLine("==================================================");
                 Console.WriteLine("= Ninguna cuenta ingresada en nuestro sistema :( =");
                 Console.WriteLine("==================================================");
+                Console.WriteLine();
+               
                 return;
             }
             for (int i = 0; i < listContas.Count; i++) //este indice e criado para faciliar na ora de transferir usuarios
@@ -108,6 +132,8 @@ namespace DIO //NameSpace tem que ser o mesmo em todas as classes relacionadas n
                 Conta conta = listContas[i]; //este indice comeca com #0 
                 Console.Write("#{0} - ", i); // o indice vai se acrescentando +1 valor por cada usuario listado
                 Console.WriteLine(conta);
+                Console.WriteLine();
+        
             }
 
 
@@ -133,21 +159,22 @@ namespace DIO //NameSpace tem que ser o mesmo em todas as classes relacionadas n
         Console.WriteLine("| Ingresar nueva cuenta |");
         Console.WriteLine("=========================");
         Console.WriteLine("=================================================================================");
-        Console.Write    ("| Escriva 1 para cuenta de Persona Fisica o 2 para cuenta de Persona Juridica:  |");
+        Console.WriteLine    ("| Escriva 1 para cuenta de Persona Fisica o 2 para cuenta de Persona Juridica:  |");
         Console.WriteLine("=================================================================================");
         int entradaTipoConta = int.Parse(Console.ReadLine());
         Console.WriteLine("===================================");
-        Console.Write    ("| Escriva el nombre del cliente:  |");
+        Console.WriteLine    ("| Escriva el nombre del cliente:  |");
         Console.WriteLine("===================================");
         string entradaNome = Console.ReadLine();
         Console.WriteLine("===========================================");
-        Console.Write    ("| Escriva la cantidad de dinero inicial:  |");
+        Console.WriteLine    ("| Escriva la cantidad de dinero inicial:  |");
         Console.WriteLine("===========================================");
         double entradaSaldo = double.Parse(Console.ReadLine());
         Console.WriteLine("==========================================");
         Console.WriteLine("| Escriva la cantidad de credito actual: |");
         Console.WriteLine("==========================================");
         double entradaCredito = double.Parse(Console.ReadLine());
+        Console.WriteLine();
 
         Conta novaConta = new Conta(
             (TipoConta)entradaTipoConta,
@@ -160,6 +187,7 @@ namespace DIO //NameSpace tem que ser o mesmo em todas as classes relacionadas n
 //===================================================================================================
         private static string ObterOpcaoUsuario()
         {
+            Console.WriteLine();
             Console.WriteLine("====================================");
             Console.WriteLine("=| Wells Bank a su disposicion!!! |=");
             Console.WriteLine("=|   Informa la opcion deseada:   |=");
@@ -168,10 +196,11 @@ namespace DIO //NameSpace tem que ser o mesmo em todas as classes relacionadas n
             Console.WriteLine("=|   2- ingresar nueva cuenta     |=");
             Console.WriteLine("=|   3- Realizar transferencia    |=");
             Console.WriteLine("=|       4- Sacar dinero          |=");
-            Console.WriteLine("=|     5- Guardar dinero         |=");
+            Console.WriteLine("=|     5- Guardar dinero          |=");
             Console.WriteLine("=|     C- Limpiar pantalla        |=");
             Console.WriteLine("=|   X- Salir de la aplicacion    |=");
             Console.WriteLine("====================================");
+            Console.WriteLine();
 
             string opcaoUsuario = Console.ReadLine().ToUpper();
             Console.WriteLine();

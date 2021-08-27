@@ -40,12 +40,14 @@ namespace DIO
             //Validacao de saldo suficiente
             if (this.Saldo - valorSaque < (this.Credito * -1))
             {
-                Console.WriteLine("Saldo insuficiente!");
+                Console.WriteLine("<< Dinero insuficiente! >>");
+                Console.WriteLine();
                 return false;
             }
                 this.Saldo -= valorSaque;
         //o valor em chave {0} e referente a os dados que estiverem em this.Nome e o valor a ser mostrado na {1} e referente ao this.Saldo
-                Console.WriteLine("Saldo atual da conta de {0} e {1}", this.Nome, this.Saldo);
+                Console.WriteLine("<< Dinero actual de la cuenta  {0}  es  ${1} >>", this.Nome, this.Saldo);
+                Console.WriteLine();
         //Procurar informacao no docs.microsoft.com composite-formating
                 return true;
         }
@@ -54,7 +56,8 @@ namespace DIO
         {
             this.Saldo += valorDeposito;
         // Esta linha faz a mesma funcao <( this.Saldo = this.Saldo + valorDeposito; )>
-            Console.WriteLine("Saldo atual da conta de {0} e {1}", this.Nome, this.Saldo);
+            Console.WriteLine("<< Dinero actual de la cuenta  {0}  es  ${1} >>", this.Nome, this.Saldo);
+            Console.WriteLine();
         }
 
         public void Transferir(double valorTransferencia, Conta contaDestino)
@@ -70,10 +73,10 @@ namespace DIO
         public override string ToString()
         {
             string retorno = "";
-            retorno += "TipoConta " + this.TipoConta + " | ";
-            retorno += "Nome " + this.Nome + " | ";
-            retorno += "Saldo " + this.Saldo + " | ";
-            retorno += "Credito " + this.Credito;
+            retorno += "Tipo de Cuenta:  " + this.TipoConta + " ||| ";
+            retorno += "Nombre:  " + this.Nome + " ||| ";
+            retorno += "Saldo:  $" + this.Saldo + " ||| ";
+            retorno += "Credito:  $" + this.Credito;
             return retorno;
         }
 
